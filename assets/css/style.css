@@ -159,3 +159,13 @@ h1 {
     background-color: rgb(66, 181, 185);
     border: 2px solid rgb(8, 145, 187);
 }
+
+.btns.correct {
+    background-color: rgb(40, 228, 40);
+    border: 2px solid rgb(6, 116, 30);
+}
+
+.btn.wrong {
+    background-color: rgb(218, 32, 32);
+    border: 2px solid rgb(129, 6, 6);
+}

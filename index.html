@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Geek Test</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="box">
+            <!-- Start Quiz Section -->
+            <h1>Ready to take the Geek Test?</h1>
+            <div class="buttons">
+                <!-- Link to the High Scores -->
+                <button id="record-btn" class="btn">High Scores</button>
+                <!-- Link to play the test -->
+                <button id="play-btn" class="btn">Play</button>
+            </div>
+        </div>
+        <!-- Records Section -->
+        <div class="records">
+            <h2 id="record-title">High Scores</h2>
+            <div class="record-holders">
+                <ul>
+                    <li class="1st-place"></li>
+                    <li class="2nd-place"></li>
+                    <li class="3rd-place"></li>
+                    <li class="4th-place"></li>
+                    <li class="5th-place"></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Quiz Time Section -->
+        <section class="quiz-time">
+            <div id="headers">
+                <div class="quiz-title">Geek Test</div>
+                <!-- Timer Div -->
+                <div class="quiz-timer">
+                    <div class="timer"></div>
+                </div>
+            </div>
+            <!-- Question Section -->
+            <section>
+                <div class="question-sect">
+                    <h2 id="question"></h2>
+                    <ul class="choices-sect">
+                        <li class="choices"><button id="answer1" type="button" class="btns">
+                                Answer 1
+                            </button></li>
+                        <li class="choices"><button id="answer2" type="button" class="btns">
+                                Answer 2
+                            </button></li>
+                        <li class="choices"><button id="answer3" type="button" class="btns">
+                                Answer 3
+                            </button></li>
+                        <li class="choices"><button id="answer4" type="button" class="btns">
+                                Answer 4
+                            </button></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </div>
+
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

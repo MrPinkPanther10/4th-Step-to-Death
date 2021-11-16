@@ -1,0 +1,161 @@
+html,
+body{
+    background-color: rgb(66, 181, 185);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: black;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Start Quiz Section */
+#box {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    color: hsl(206, 17%, 28%);
+    font-size: 18px;
+    margin: 0 auto;
+    max-width: 70%;
+    padding: 100px 50px;
+    display: block;
+}
+
+#play-btn.btn {
+    float: right;
+}
+
+#records-btn.btn {
+    float: left;
+}
+
+/* All Buttons */
+.btn {
+    border: none;
+    background-color: hsl(360, 91%, 36%);
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    color: hsl(360, 91%, 36%);
+    background-color:hsl(0, 0%, 100%);
+    border: 2px solid hsl(360, 91%, 36%);
+    
+}
+
+.hidden {
+    display: none;
+}
+
+/* Records Section */
+.records {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    color: hsl(206, 17%, 28%);
+    font-size: 18px;
+    margin: 0 auto;
+    width: 40%;
+    padding: 20px 100px;
+    display: none;
+    height: 600px;
+}
+
+#record-title {
+    font-size: 50px;
+}
+
+.record-holders ul li{
+    padding: 20px;
+}
+
+/* Quiz Time Department */
+.quiz-time {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    color: hsl(206, 17%, 28%);
+    font-size: 18px;
+    margin: 0 auto;
+    width: 40%;
+    padding: 50px 50px;
+    display: none;
+    height: 600px;
+}
+
+.quiz-title {
+    float: left;
+    font-size: 50px;
+}
+
+.quiz-timer {
+    float: right;
+    font-size: 50px;
+}
+
+/* Question Section */
+.question-sect {
+    padding-top: 60px;
+    padding-left: 10px;
+}
+
+#question {
+    font-size: 40px;
+}
+
+.btns {
+    border: none;
+    background-color: rgb(232, 229, 240);
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+    color: hsl(0, 0%, 0%);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    width: 30%;
+}
+
+
+.btns:hover {
+    color: white;
+    background-color: rgb(66, 181, 185);
+    border: 2px solid rgb(8, 145, 187);
+}

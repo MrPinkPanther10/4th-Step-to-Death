@@ -25,12 +25,12 @@
         <div class="records">
             <h2 id="record-title">High Scores</h2>
             <div class="record-holders">
-                <ul>
-                    <li class="1st-place"></li>
-                    <li class="2nd-place"></li>
-                    <li class="3rd-place"></li>
-                    <li class="4th-place"></li>
-                    <li class="5th-place"></li>
+                <ul class="holders">
+                    <!-- <li class="place-1st"></li>
+                    <li class="place-2nd"></li>
+                    <li class="place-3rd"></li>
+                    <li class="place-4th"></li>
+                    <li class="place-5th"></li> -->
                 </ul>
             </div>
         </div>
@@ -65,7 +65,13 @@
             <div class="final-score">
                 <h2>Congratulations!</h2>
                 <p class="score-result"></p>
-                <p class="record-name">Enter your name to record it</p>
+                <form>
+                    <label for="input-name">Enter name to record</label>
+                    <input type="text" id="input-name" placeholder="Your Name" />
+                </br>
+                    <button type="submit" id="submit-record">Submit</button>
+                </form>
+
             </div>
         </section>
     </div>

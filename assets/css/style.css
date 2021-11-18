@@ -100,6 +100,11 @@ h1 {
     padding: 20px;
 }
 
+.holders li {
+    font-size: 40px;
+
+}
+
 /* Quiz Time Department */
 .quiz-time {
     background-color: hsl(0, 0%, 100%);

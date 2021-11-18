@@ -26,7 +26,7 @@ var nameInput = document.querySelector("#input-name")
 var submitEl = document.querySelector("#submit-record")
 
 // Score Array
-var scoreEl = 0;
+var scoreCount = 0;
 
 // Answer Buttons
 // Button in general
@@ -74,6 +74,36 @@ const questions = [
         question: "Which Order brought down the Jedi?",
         answers: ["Order 69", "Order 51", "Order 99", "Order 66"],
         correctAnswer: "3"
+    },
+    {
+        // 6th Question
+        question: "What was the name of the Friendly Ghost?",
+        answers: ["Casper", "Boo", "Luke", "Emia"],
+        correctAnswer: "0"
+    },
+    {
+        // 7th Question
+        question: "Which of the following is the antagonist in The Matrix",
+        answers: ["Neo", "Trinity", "Agent Smith", "Morpheus"],
+        correctAnswer: "2"
+    },
+    {
+        // 8th Question
+        question: "Where did Kevin's family travel to in Home Alone",
+        answers: ["New York", "Paris", "Los Angeles", "London"],
+        correctAnswer: "1"
+    },
+    {
+        // 9th Question
+        question: "The Terminator's Famous Quote was",
+        answers: ["I'll be back", "Run Forest, Run!", "Say hello to my little friend", "Say ‘What’ Again! I Dare You! I Double-Dare You, Motherf*****"],
+        correctAnswer: "0"
+    },
+    {
+        // 10th Question
+        question: "What is Superman's original name, the one he was born with?",
+        answers: ["Clark Kent", "Steve Rogers", "Barry Allen", "Kal'el"],
+        correctAnswer: "3"
     }
 ]
 
@@ -109,7 +139,7 @@ function showRecords() {
     introEl.style.display = "none"
     recordsEl.style.display = "block"
 
-    displayScores();
+    displayScores()
 }
 
 // function to reset the button colors
@@ -143,7 +173,7 @@ function checkAnswer(answer) {
     // answer checker
     if (questions[questionCount].correctAnswer === answer.target.value) {
         answer.target.style.backgroundColor = "green"
-        scoreEl++
+        scoreCount++
     } else if (questions[questionCount].correctAnswer !== answer.target.value) {
         answer.target.style.backgroundColor = "red"
     }
@@ -161,27 +191,46 @@ function checkAnswer(answer) {
 function finalScore() {
     quizEl.style.display = "none";
     resultEl.style.display = "block";
-    finalScoreEl.textContent = ("You scored " + scoreEl + " out of " + questions.length)
+    finalScoreEl.textContent = ("You scored " + scoreCount + " out of " + questions.length)
 }
 
-
+var userList = []
 
 // function to add scores to local storage
 function addScore(event) {
     event.preventDefault()
 
     resultEl.style.display = "none"
+    recordsEl.style.display = "block"
 
     var user = {
         recordName: nameInput.value.trim(),
-        score: scoreEl,
+        score: scoreCount,
+    }
+
+    // add your scores to a record of lists
+    if (!localStorage.getItem("userlist")) {
+        userList.push(user)
+        console.log("user doesnt exist")
+        localStorage.setItem("userlist", JSON.stringify(userList))
+    } else {
+        userList = JSON.parse(localStorage.getItem("userlist"))
+        userList.push(user)
+        localStorage.setItem("userlist", JSON.stringify(userList))
     }
 
     // add to local storage
     localStorage.setItem("user", JSON.stringify(user));
 
-    // sort all scores
-    holdersEl = holdersEl.sort((a, b) => {
+    showRecords()
+}
+
+
+function displayScores() {
+    var tempUserList = JSON.parse(localStorage.getItem("userlist"))
+
+    // sort scores
+    tempUserList = tempUserList.sort((a, b) => {
         if (a.score < b.score) {
             return 1;
         } else {
@@ -189,19 +238,12 @@ function addScore(event) {
         }
     });
 
-    holdersEl.innerHTML="";
-    for (let i = 0; i < holdersEl.length; i++) {
+    // pull scores from local storage then put them to a list
+    for (let i = 0; i < tempUserList.length; i++) {
         let li = document.createElement("li");
-        li.textContent = `${user[i].recordName}: ${user[i].score}`;
-        holdersEl.append(li);
+            li.textContent = `${tempUserList[i].recordName}: ${tempUserList[i].score}`;
+            holdersEl.append(li);
     }
-
-    showRecords()
-}
-
-function displayScores() {
-    var recordHolder = localStorage.getItem("user")
-    document.getElementById("user").value = recordHolder;
 }
 
 
@@ -220,57 +262,3 @@ ansBtn.forEach(item => {
 });
 // Submit Name to Records
 submitEl.addEventListener("click", addScore)
-
-
-// if (secondsLeft === 0 || questionCount === questions.length) {
-//     clearInterval(timerInterval);
-//     quizEl.style.display = "none";
-//     resultEl.style.display = "block";
-// }
-// }, 1000);
-
-// if (secondsLeft === 0 || questionCount === questions.length) {
-//     questionCount++
-//     questionStart(questionCount)
-//     clearInterval(timerInterval);
-// }
-// }, 1000);
-
-// let init = nameInput.value.toUpperCase();
-// holdersEl.push({ name: init, score: scoreEl });
-
-// // sort scores
-// holdersEl = holdersEl.sort((a, b) => {
-//     if (a.score < b.score) {
-//       return 1;
-//     } else {
-//       return -1;
-//     }
-//   });
-
-// holdersEl.innerHTML="";
-// for (let i = 0; i < holdersEl.length; i++) {
-//     let li = document.createElement("li");
-//     li.textContent = `${holdersEl[i].name}: ${holdersEl[i].score}`;
-//     holdersEl.append(li);
-// }
-
-// // Add to local storage
-// storeScores();
-// displayScores();
-// }
-
-// function storeScores() {
-// localStorage.setItem("holdersEl", JSON.stringify(holdersEl));
-// }
-
-// function displayScores() {
-// // Get stored scores from localStorage
-// // Parsing the JSON string to an object
-// let storedScoreList = JSON.parse(localStorage.getItem("holdersEl"));
-
-// // If scores were retrieved from localStorage, update the scorelist array to it
-// if (storedScoreList !== null) {
-//     holdersEl = storedScoreList;
-// }
-// }

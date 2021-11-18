@@ -112,7 +112,7 @@ h1 {
     width: 40%;
     padding: 50px 50px;
     display: none;
-    height: 600px;
+    max-height: 1000px;
 }
 
 .quiz-title {
@@ -150,7 +150,7 @@ h1 {
     text-align: center;
     cursor: pointer;
     text-decoration: none;
-    width: 30%;
+    width: 50%;
 }
 
 
@@ -160,12 +160,29 @@ h1 {
     border: 2px solid rgb(8, 145, 187);
 }
 
-.btns.correct {
-    background-color: rgb(40, 228, 40);
-    border: 2px solid rgb(6, 116, 30);
+/* Final Score Section */
+#final {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+    color: hsl(206, 17%, 28%);
+    margin: 0 auto;
+    width: 40%;
+    padding: 50px 50px;
+    display: none;
+    height: 600px;
 }
 
-.btn.wrong {
-    background-color: rgb(218, 32, 32);
-    border: 2px solid rgb(129, 6, 6);
+.final-score h2 {
+    font-size: 70px;
 }
+
+.score-result {
+    font-size: 50px;
+}
+
+.record-name {
+    font-size: 50px;
+}
+

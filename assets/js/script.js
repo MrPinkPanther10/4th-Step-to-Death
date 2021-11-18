@@ -6,16 +6,24 @@ var playBtn = document.querySelector("#play-btn")
 var recordsBtn = document.querySelector("#record-btn")
 // REcords Section
 var recordsEl = document.querySelector(".records")
+var holdersEl = document.querySelector(".holders")
+// var place1El = document.querySelector(".place-1st")
+// var place2El = document.querySelector(".place-2nd")
+// var place3El = document.querySelector(".place-3rd")
+// var place4El = document.querySelector(".place-4th")
+// var place5El = document.querySelector(".place-5th")
 // Quiz Time Section
 var quizEl = document.querySelector(".quiz-time")
 var timerEl = document.querySelector(".quiz-timer")
-var secondsLeft = 16
+var secondsLeft = 51
 // Question Section
 var questionEl = document.querySelector("#question")
 var questionCount = 0;
 // Final Score Section
 var resultEl = document.querySelector("#final")
 var finalScoreEl = document.querySelector(".score-result")
+var nameInput = document.querySelector("#input-name")
+var submitEl = document.querySelector("#submit-record")
 
 // Score Array
 var scoreEl = 0;
@@ -81,7 +89,7 @@ function setTime() {
 
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
-            addScores()
+            finalScore()
         }
     }, 1000);
 }
@@ -100,6 +108,8 @@ function startTest() {
 function showRecords() {
     introEl.style.display = "none"
     recordsEl.style.display = "block"
+
+    displayScores();
 }
 
 // function to reset the button colors
@@ -148,10 +158,50 @@ function checkAnswer(answer) {
 }
 
 // function to add all scores and show final score section
-function addScores() {
+function finalScore() {
     quizEl.style.display = "none";
     resultEl.style.display = "block";
-    finalScoreEl.textContent = ("You have the score of " + scoreEl + " out of " + questions.length)
+    finalScoreEl.textContent = ("You scored " + scoreEl + " out of " + questions.length)
+}
+
+
+
+// function to add scores to local storage
+function addScore(event) {
+    event.preventDefault()
+
+    resultEl.style.display = "none"
+
+    var user = {
+        recordName: nameInput.value.trim(),
+        score: scoreEl,
+    }
+
+    // add to local storage
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // sort all scores
+    holdersEl = holdersEl.sort((a, b) => {
+        if (a.score < b.score) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+
+    holdersEl.innerHTML="";
+    for (let i = 0; i < holdersEl.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = `${user[i].recordName}: ${user[i].score}`;
+        holdersEl.append(li);
+    }
+
+    showRecords()
+}
+
+function displayScores() {
+    var recordHolder = localStorage.getItem("user")
+    document.getElementById("user").value = recordHolder;
 }
 
 
@@ -168,6 +218,9 @@ recordsBtn.addEventListener("click", showRecords);
 ansBtn.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
+// Submit Name to Records
+submitEl.addEventListener("click", addScore)
+
 
 // if (secondsLeft === 0 || questionCount === questions.length) {
 //     clearInterval(timerInterval);
@@ -182,3 +235,42 @@ ansBtn.forEach(item => {
 //     clearInterval(timerInterval);
 // }
 // }, 1000);
+
+// let init = nameInput.value.toUpperCase();
+// holdersEl.push({ name: init, score: scoreEl });
+
+// // sort scores
+// holdersEl = holdersEl.sort((a, b) => {
+//     if (a.score < b.score) {
+//       return 1;
+//     } else {
+//       return -1;
+//     }
+//   });
+
+// holdersEl.innerHTML="";
+// for (let i = 0; i < holdersEl.length; i++) {
+//     let li = document.createElement("li");
+//     li.textContent = `${holdersEl[i].name}: ${holdersEl[i].score}`;
+//     holdersEl.append(li);
+// }
+
+// // Add to local storage
+// storeScores();
+// displayScores();
+// }
+
+// function storeScores() {
+// localStorage.setItem("holdersEl", JSON.stringify(holdersEl));
+// }
+
+// function displayScores() {
+// // Get stored scores from localStorage
+// // Parsing the JSON string to an object
+// let storedScoreList = JSON.parse(localStorage.getItem("holdersEl"));
+
+// // If scores were retrieved from localStorage, update the scorelist array to it
+// if (storedScoreList !== null) {
+//     holdersEl = storedScoreList;
+// }
+// }

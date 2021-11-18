@@ -182,7 +182,34 @@ h1 {
     font-size: 50px;
 }
 
-.record-name {
+label {
     font-size: 50px;
+}
+
+#input-name {
+    font-size: 50px;
+}
+
+#submit-record {
+    border: none;
+    background-color: hsl(360, 91%, 36%);
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+    color: hsl(0, 0%, 100%);
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    margin: 16px 16px 16px 20px;
+    padding: 14px 34px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#submit-record:hover{
+    color: hsl(360, 91%, 36%);
+    background-color:hsl(0, 0%, 100%);
+    border: 2px solid hsl(360, 91%, 36%);
 }
 
